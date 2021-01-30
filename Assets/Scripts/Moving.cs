@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Moving : MonoBehaviour
@@ -20,6 +21,7 @@ public class Moving : MonoBehaviour
     [Header("TrailRenderer")] 
     public float timeBetweenEachPoint = 0.3f;
     public GameObject lineRenderModel;
+    public VisualEffect particleFX;
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
     private List<Vector3> _lastPoints;
@@ -74,6 +76,7 @@ public class Moving : MonoBehaviour
         // Move closer to Destination
         Vector2 p = Vector2.MoveTowards(transform.position, _dest, speed);
         _rigidbody2D.MovePosition(p);
+        
 
         // Check for Input if not moving
         /*if ((Vector2) transform.position == _dest)
@@ -118,6 +121,7 @@ public class Moving : MonoBehaviour
             
         if( Valid(orientation))
         {
+            particleFX.SetVector3("PlayerVelocity", orientation);
             _dest = (Vector2) transform.position + orientation;
         }
         
