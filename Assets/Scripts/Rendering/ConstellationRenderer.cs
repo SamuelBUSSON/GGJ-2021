@@ -14,6 +14,9 @@ public class ConstellationRenderer : MonoBehaviour
 
     private List<GameObject> _startingPositions;
     private List<GameObject> _goalPositions;
+    private Material _lineRendererMaterial;
+    private static readonly int Lerp = Shader.PropertyToID("_Lerp");
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,22 +24,24 @@ public class ConstellationRenderer : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _startingPositions = new List<GameObject>();
 
-        int maxPoint = 10;
-        for (int i = 0; i < maxPoint; i++)
-        {
-            for (int j = 0; j < maxPoint; j++)
-            {
-                AddPoint(new Vector3(i *  2, j));
-            }
-        }
+        _lineRendererMaterial = _lineRenderer.material;
+
+        /* int maxPoint = 10;
+         for (int i = 0; i < maxPoint; i++)
+         {
+             for (int j = 0; j < maxPoint; j++)
+             {
+                 AddPoint(new Vector3(i *  2, j));
+             }
+         }*/
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        /*if (Input.GetKeyDown(KeyCode.A))
         {
             DrawLine();
-        }
+        }*/
     }
 
     public void AddPoint(Vector3 newPoint)
@@ -67,14 +72,17 @@ public class ConstellationRenderer : MonoBehaviour
             float dotProduct = Vector3.Dot(lineDir, vecDir);
             
             GameObject goal = new GameObject();
-            goal.transform.position = lineDir * dotProduct;
             goal.transform.parent = transform;
+            goal.transform.position = _startingPositions[0].transform.position + lineDir * dotProduct;
             goalPositions[i] = goal;
+
             
             seq.Join(_startingPositions[i].transform.DOMove(goalPositions[i].transform.position, timeToStretch))
                 .SetEase(Ease.InOutQuad)
                 .OnComplete(() => Destroy(goal));
         }
+
+        seq.Join(DOVirtual.Float(0, 1, timeToStretch, value => _lineRendererMaterial.SetFloat(Lerp, value)));
     }
 
     public void UpdatePositions()
@@ -86,6 +94,14 @@ public class ConstellationRenderer : MonoBehaviour
         }
 
         _lineRenderer.SetPositions(pointPositions);
+    }
+
+    public Vector3 GetLastPoint(int i)
+    {
+        if(_startingPositions.Count < 1 - i)
+            return Vector3.zero;
+        return _startingPositions[_startingPositions.Count - 1 - i].transform.position;
+
     }
     
 }

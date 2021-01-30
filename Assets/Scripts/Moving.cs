@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Moving : MonoBehaviour
 {
-    public float speed = 0.4f;
-    Vector2 _dest = Vector2.zero;
+    public float speed = 0.4f;private Vector2 _dest = Vector2.zero;
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
     [SerializeField]
@@ -16,12 +17,56 @@ public class Moving : MonoBehaviour
     private Vector2 lastKeyPressed = new Vector2(0,0);
     private SpriteRenderer character;
 
+    [Header("TrailRenderer")] 
+    public float timeBetweenEachPoint = 0.3f;
+    public GameObject lineRenderModel;
+    private float _timerSetPoint;
+    private ConstellationRenderer _CurrentConstellationRenderer;
+    private List<Vector3> _lastPoints;
+
     void Start()
     {
         character = GetComponent < SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _dest = transform.position;
+
+        _lastPoints = new List<Vector3>();
+        GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
+        newConstellationRenderer.AddComponent<ConstellationRenderer>();
+        _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+    }
+
+    private void Update()
+    {
+        _timerSetPoint += Time.deltaTime;
+        if (_timerSetPoint > timeBetweenEachPoint)
+        {
+            _timerSetPoint = .0f;
+            _CurrentConstellationRenderer.AddPoint(transform.position);
+
+            
+            if (_lastPoints.Count > 0)
+            {
+                foreach (var lastPoint in _lastPoints)
+                {
+                    _CurrentConstellationRenderer.AddPoint(lastPoint);
+                }
+                _lastPoints.Clear();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _CurrentConstellationRenderer.DrawLine();
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
+
+            GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
+            newConstellationRenderer.AddComponent<ConstellationRenderer>();
+            _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+            
+        }
     }
 
     void FixedUpdate()
