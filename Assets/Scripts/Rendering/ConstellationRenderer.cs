@@ -9,7 +9,6 @@ using UnityEngine;
 public class ConstellationRenderer : MonoBehaviour
 {
     public float timeToStretch = 1.0f;
-    public AnimationCurve easeFunction;
 
     private LineRenderer _lineRenderer;
 
@@ -73,7 +72,7 @@ public class ConstellationRenderer : MonoBehaviour
             goalPositions[i] = goal;
             
             seq.Join(_startingPositions[i].transform.DOMove(goalPositions[i].transform.position, timeToStretch))
-                .SetEase(easeFunction)
+                .SetEase(Ease.InOutQuad)
                 .OnComplete(() => Destroy(goal));
         }
     }
