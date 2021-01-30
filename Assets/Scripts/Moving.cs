@@ -14,9 +14,11 @@ public class Moving : MonoBehaviour
     [SerializeField]
     private Vector2 orientation = new Vector2(0,0);
     private Vector2 lastKeyPressed = new Vector2(0,0);
+    private SpriteRenderer character;
 
     void Start()
     {
+        character = GetComponent < SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _dest = transform.position;
@@ -79,7 +81,8 @@ public class Moving : MonoBehaviour
         {
             // Cast Line from 'next to Pac-Man' to 'Pac-Man'
             Vector2 pos = transform.position;
-            RaycastHit2D hit = Physics2D.Linecast(pos + dir, pos);
+            RaycastHit2D hit = Physics2D.CircleCast(pos+dir, character.bounds.size.x / 2, -dir, character.bounds.size.x / 2);
+            Debug.DrawLine(pos,pos+dir,Color.red,1f);
             return (hit.collider == _collider2D);
         }
     }
