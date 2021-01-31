@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject starPrefab;
+    public IntVariable score;
 
     public List<GameObject> spawners;
     private int nbSpawner;
@@ -48,6 +50,9 @@ public class Spawner : MonoBehaviour
             nbSpawner--;
             Debug.Log("Spawned");
         }
+
+        score.Value += 100;
+
     }
 
 
