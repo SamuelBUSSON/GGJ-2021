@@ -23,9 +23,11 @@ public class Moving : MonoBehaviour
     public float timeBetweenEachPoint = 0.3f;
     public GameObject lineRenderModel;
     public VisualEffect particleFX;
+    
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
     private List<Vector3> _lastPoints;
+    private List<GameObject> _constellationLines;
 
     void Start()
     {
@@ -35,6 +37,7 @@ public class Moving : MonoBehaviour
         _dest = transform.position;
         size = character.bounds.size.x;
 
+        _constellationLines = new List<GameObject>();
         _lastPoints = new List<Vector3>();
         GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
         newConstellationRenderer.AddComponent<ConstellationRenderer>();
