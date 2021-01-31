@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.VFX;
@@ -25,6 +26,7 @@ public class Moving : MonoBehaviour
     public GameObject lineRenderModel;
     public VisualEffect particleFX;
     public Vector2 generateConstellationRange = new Vector2(4, 6);
+    public List<GameObject> constellationPosition;
     
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
@@ -126,9 +128,8 @@ public class Moving : MonoBehaviour
         if(Valid(orientation*size))
         {
             particleFX.SetVector3("PlayerVelocity", orientation);
-          
-            SetRotation(orientation);
-              _dest = (Vector2) transform.position + orientation*size;
+            _dest = (Vector2) transform.position + orientation*size;
+             SetRotation(orientation);
         }
         else
         {
@@ -169,6 +170,45 @@ public class Moving : MonoBehaviour
 
     public void GetStar()
     {
+        
+        if (_constellationLines.Count >= Random.Range(generateConstellationRange.x, generateConstellationRange.y) && constellationPosition.Count > 0)
+        {
+            
+            Transform t = constellationPosition[0].transform;
+            constellationPosition.RemoveAt(0);
+
+            Debug.Log("Move");
+            
+            GameObject group = new GameObject();
+
+            float timeToMove = 1.0f;
+            int countPos = 0;
+            Vector3 middle = Vector3.zero;
+            
+            foreach (var constellationLine in _constellationLines)
+            {
+                LineRenderer ld = constellationLine.GetComponent<LineRenderer>();
+                middle += (ld.GetPosition(0) + ld.GetPosition(1)) / 2.0f;
+                ++countPos; 
+            }
+
+            group.transform.position = middle / countPos;
+            
+            foreach (var constellationLine in _constellationLines)
+            {
+                constellationLine.transform.parent = group.transform;
+            }
+
+            group.transform.DOMove(t.position, timeToMove);
+            group.transform.DOScale(new Vector3(0.3f, 0.3f, 0.3f), timeToMove);
+            
+            _constellationLines.Clear();
+            
+            
+            Debug.Break();
+        }
+        
+        
         if (_CurrentConstellationRenderer)
         {
             _CurrentConstellationRenderer.DrawLine();
@@ -181,9 +221,6 @@ public class Moving : MonoBehaviour
         
         _constellationLines.Add(newConstellationRendere);
 
-        if (_constellationLines.Count >= Random.Range(generateConstellationRange.x, generateConstellationRange.y))
-        {
-            
-        }
+       
     }
 }
