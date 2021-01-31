@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -75,7 +76,9 @@ public class Timer : MonoBehaviour
     {
         timer.Value = timer.InitialValue;
         _resetTimer = false;
-       // transform.position = _basePostion;
+
+        SceneManager.LoadSceneAsync(2);
+        // transform.position = _basePostion;
     }
 
     void ShakeObject()
