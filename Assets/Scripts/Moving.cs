@@ -27,6 +27,7 @@ public class Moving : MonoBehaviour
     public VisualEffect particleFX;
     public Vector2 generateConstellationRange = new Vector2(4, 6);
     public List<GameObject> constellationPosition;
+    public List<GameObject> constellationDrawn;
     
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
@@ -46,6 +47,8 @@ public class Moving : MonoBehaviour
         GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
         newConstellationRenderer.AddComponent<ConstellationRenderer>();
         _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+        
+        _constellationLines.Add(newConstellationRenderer);
         
         FMODUnity.RuntimeManager.PlayOneShot("event:/Music/StartTheMFMusicGame");  
     }
@@ -197,15 +200,21 @@ public class Moving : MonoBehaviour
             foreach (var constellationLine in _constellationLines)
             {
                 constellationLine.transform.parent = group.transform;
+
+                constellationLine.GetComponent<LineRenderer>().widthMultiplier = 0.1f;
+
             }
 
-            group.transform.DOMove(t.position, timeToMove);
-            group.transform.DOScale(new Vector3(0.3f, 0.3f, 0.3f), timeToMove);
+            Sequence moveSeq = DOTween.Sequence();
+            moveSeq.AppendInterval(1.5f);
+            moveSeq.Append(group.transform.DOMove(t.position, timeToMove));
+            moveSeq.Join(group.transform.DOScale(new Vector3(0.3f, 0.3f, 0.3f), timeToMove));
+            moveSeq.AppendCallback(SetLineSize);
             
             _constellationLines.Clear();
             
+            constellationDrawn.Add(group);
             
-            Debug.Break();
         }
         
         
@@ -220,7 +229,10 @@ public class Moving : MonoBehaviour
         _CurrentConstellationRenderer = newConstellationRendere.GetComponent<ConstellationRenderer>();
         
         _constellationLines.Add(newConstellationRendere);
+    }
 
-       
+    public void SetLineSize()
+    {
+        
     }
 }
