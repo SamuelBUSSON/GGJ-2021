@@ -56,7 +56,8 @@ public class Timer : MonoBehaviour
                     rewindSequence.Join(transform.DOShakePosition(resetTime, 2.0f));
                 }
                 rewindSequence.AppendCallback(ResetTimer);
-
+                
+                FMODUnity.RuntimeManager.PlayOneShot("SFX/Clock/5secBeforeEnd");
 
             }
         }
