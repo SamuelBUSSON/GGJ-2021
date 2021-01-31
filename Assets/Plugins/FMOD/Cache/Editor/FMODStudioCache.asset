@@ -68,7 +68,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &-4244027443240613389
+--- !u!114 &-3641947989425790922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,11 +151,7 @@ MonoBehaviour:
   Path: Assets/SoundBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-<<<<<<< Updated upstream
-  lastModified: 637477033717849148
-=======
-  lastModified: 637477050920284460
->>>>>>> Stashed changes
+  lastModified: 637477049902690308
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -174,11 +170,7 @@ MonoBehaviour:
   Path: Assets/SoundBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-<<<<<<< Updated upstream
-  lastModified: 637477033717909517
-=======
-  lastModified: 637477050919855595
->>>>>>> Stashed changes
+  lastModified: 637477049902421049
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -227,23 +219,14 @@ MonoBehaviour:
   - {fileID: 7128009827647515162}
   - {fileID: -6833237831360775193}
   - {fileID: 5570163822231084474}
-<<<<<<< Updated upstream
-  - {fileID: -4244027443240613389}
-  - {fileID: -299077424710332330}
-=======
-  - {fileID: -3389984939861057405}
-  - {fileID: -6159874242229777363}
->>>>>>> Stashed changes
+  - {fileID: -3641947989425790922}
+  - {fileID: 4093512657321839728}
   EditorParameters: []
   MasterBanks:
   - {fileID: -851152733581853699}
   StringsBanks:
   - {fileID: -310892737686551414}
-<<<<<<< Updated upstream
-  stringsBankWriteTime: 637477033717909517
-=======
-  stringsBankWriteTime: 637477050919855595
->>>>>>> Stashed changes
+  stringsBankWriteTime: 637477049902421049
   cacheVersion: 6
 --- !u!114 &1324082387442342480
 MonoBehaviour:
@@ -259,6 +242,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Point/Exit
   guid: 0c4abbbec7a05e44bed349c938fcc8b3
+  Banks:
+  - {fileID: -851152733581853699}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &4093512657321839728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/StartTheMFMusicGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/StartTheMFMusicGame
+  guid: ece36bae935d164bbc964088fef2b084
   Banks:
   - {fileID: -851152733581853699}
   IsStream: 0
