@@ -135,7 +135,7 @@ LineRenderer:
     textureMode: 1
     shadowBias: 0
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &8935125355143933799
 MonoBehaviour:

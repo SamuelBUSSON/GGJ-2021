@@ -83,6 +83,7 @@ public class ConstellationRenderer : MonoBehaviour
         }
 
         seq.Join(DOVirtual.Float(0, 1, timeToStretch, value => _lineRendererMaterial.SetFloat(Lerp, value)));
+        seq.AppendCallback(Clean);
     }
 
     public void UpdatePositions()
@@ -102,6 +103,15 @@ public class ConstellationRenderer : MonoBehaviour
             return Vector3.zero;
         return _startingPositions[_startingPositions.Count - 1 - i].transform.position;
 
+    }
+
+    public void Clean()
+    {
+        Vector3 first = _startingPositions[0].transform.position;
+        Vector3 last = _startingPositions[_startingPositions.Count - 1].transform.position;
+        _startingPositions.Clear();
+        AddPoint(first);
+        AddPoint(last);
     }
     
 }
