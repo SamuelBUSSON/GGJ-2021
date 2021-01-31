@@ -56,7 +56,8 @@ public class Timer : MonoBehaviour
                     rewindSequence.Join(transform.DOShakePosition(resetTime, 2.0f));
                 }
                 rewindSequence.AppendCallback(ResetTimer);
-
+                
+                FMODUnity.RuntimeManager.PlayOneShot("SFX/Clock/5secBeforeEnd");
 
             }
         }
@@ -66,7 +67,7 @@ public class Timer : MonoBehaviour
     {
         timer.Value = timer.InitialValue;
         _resetTimer = false;
-        transform.position = _basePostion;
+       // transform.position = _basePostion;
     }
 
     void ShakeObject()

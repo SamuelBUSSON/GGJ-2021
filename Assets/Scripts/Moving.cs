@@ -119,7 +119,9 @@ public class Moving : MonoBehaviour
         if(Valid(orientation*size))
         {
             particleFX.SetVector3("PlayerVelocity", orientation);
-            _dest = (Vector2) transform.position + orientation*size;
+          
+            SetRotation(orientation);
+              _dest = (Vector2) transform.position + orientation*size;
         }
         else
         {
@@ -136,17 +138,5 @@ public class Moving : MonoBehaviour
             Debug.DrawLine(pos+dir,pos,Color.red,1f);
             return (hit.collider == _collider2D);
         }
-    }
-
-    public void GetStar()
-    {
-
-            _CurrentConstellationRenderer.DrawLine();
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
-            GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
-            newConstellationRenderer.AddComponent<ConstellationRenderer>();
-            _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
-            
     }
 }
