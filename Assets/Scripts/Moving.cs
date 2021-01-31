@@ -17,6 +17,7 @@ public class Moving : MonoBehaviour
     private Vector2 orientation = new Vector2(0,0);
     private Vector2 lastKeyPressed = new Vector2(0,0);
     private SpriteRenderer character;
+    private float size;
 
     [Header("TrailRenderer")] 
     public float timeBetweenEachPoint = 0.3f;
@@ -32,6 +33,7 @@ public class Moving : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _dest = transform.position;
+        size = character.bounds.size.x;
 
         _lastPoints = new List<Vector3>();
         GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
@@ -41,7 +43,7 @@ public class Moving : MonoBehaviour
 
     private void Update()
     {
-        _timerSetPoint += Time.deltaTime;
+       _timerSetPoint += Time.deltaTime;
         if (_timerSetPoint > timeBetweenEachPoint)
         {
             _timerSetPoint = .0f;
@@ -58,17 +60,8 @@ public class Moving : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _CurrentConstellationRenderer.DrawLine();
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
 
-            GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
-            newConstellationRenderer.AddComponent<ConstellationRenderer>();
-            _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
-            
-        }
+        
     }
 
     void FixedUpdate()
@@ -114,25 +107,56 @@ public class Moving : MonoBehaviour
             }
         }
         
-        if ((buffer != orientation) &&  Valid(buffer))
+        if ((buffer != orientation) &&  Valid(buffer*size))
         {
             orientation = buffer;
+            if (orientation == Vector2.down || orientation == Vector2.up)
+                _rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            else if (orientation == Vector2.left || orientation==Vector2.right)
+                _rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
         }
             
-        if( Valid(orientation))
+        if(Valid(orientation*size))
         {
             particleFX.SetVector3("PlayerVelocity", orientation);
-            _dest = (Vector2) transform.position + orientation;
+          
+            SetRotation(orientation);
+              _dest = (Vector2) transform.position + orientation*size;
+        }
+        else
+        {
+           // orientation = Vector2.zero;
         }
         
 
         bool Valid(Vector2 dir)
         {
+            //if (dir == Vector2.zero) return (true);
             // Cast Line from 'next to Pac-Man' to 'Pac-Man'
             Vector2 pos = transform.position;
-            RaycastHit2D hit = Physics2D.CircleCast(pos+dir, character.bounds.size.x / 2, -dir, character.bounds.size.x / 2);
-            Debug.DrawLine(pos,pos+dir,Color.red,1f);
+            RaycastHit2D hit = Physics2D.CircleCast(pos+dir, size*0.55f, -dir,2f*Vector2.Distance(pos,dir));
+            Debug.DrawLine(pos+dir,pos,Color.red,1f);
             return (hit.collider == _collider2D);
+        }
+    }
+    
+    private void SetRotation(Vector2 direction)
+    {
+        if (direction == Vector2.left)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        if (direction == Vector2.up)
+        {
+            transform.rotation = Quaternion.Euler(0,0,-90);
+        }
+        if (direction == Vector2.down)
+        {
+            transform.rotation = Quaternion.Euler(0,0,90);
+        }
+        if (direction == Vector2.right)
+        {
+            transform.rotation = Quaternion.Euler(0,0,180);
         }
     }
 }
