@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,8 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 0
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,23 +195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -310892737686551414}
-  - {fileID: -851152733581853699}
-  EditorEvents:
-  - {fileID: 1324082387442342480}
-  - {fileID: 7128009827647515162}
-  - {fileID: -6833237831360775193}
-  - {fileID: 5570163822231084474}
-  - {fileID: -3641947989425790922}
-  - {fileID: 4093512657321839728}
+  EditorBanks: []
+  EditorEvents: []
   EditorParameters: []
-  MasterBanks:
-  - {fileID: -851152733581853699}
-  StringsBanks:
-  - {fileID: -310892737686551414}
-  stringsBankWriteTime: 637477049902421049
+  MasterBanks: []
+  StringsBanks: []
+  stringsBankWriteTime: 0
   cacheVersion: 6
+<<<<<<< Updated upstream
 --- !u!114 &1324082387442342480
 =======
 --- !u!114 &6142155131206326763
@@ -308,3 +302,5 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+=======
+>>>>>>> Stashed changes
