@@ -60,17 +60,7 @@ public class Moving : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _CurrentConstellationRenderer.DrawLine();
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
-            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
 
-            GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
-            newConstellationRenderer.AddComponent<ConstellationRenderer>();
-            _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
-            
-        }
         
     }
 
@@ -144,8 +134,19 @@ public class Moving : MonoBehaviour
             Vector2 pos = transform.position;
             RaycastHit2D hit = Physics2D.CircleCast(pos+dir, size*0.55f, -dir,2f*Vector2.Distance(pos,dir));
             Debug.DrawLine(pos+dir,pos,Color.red,1f);
-            Debug.Log(hit.collider);
             return (hit.collider == _collider2D);
         }
+    }
+
+    public void GetStar()
+    {
+
+            _CurrentConstellationRenderer.DrawLine();
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
+            GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
+            newConstellationRenderer.AddComponent<ConstellationRenderer>();
+            _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+            
     }
 }
