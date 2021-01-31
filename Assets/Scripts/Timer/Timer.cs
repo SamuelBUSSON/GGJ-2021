@@ -14,6 +14,8 @@ public class Timer : MonoBehaviour
     private float _initialValue;
     private float _angle;
     private Vector3 _basePostion;
+
+    private bool _playedEndSFX;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,8 @@ public class Timer : MonoBehaviour
         _basePostion = transform.position;
 
         _angle = 360.0f /  timer.InitialValue;
+
+        _playedEndSFX = false;
     }
 
     // Update is called once per frame
@@ -56,10 +60,14 @@ public class Timer : MonoBehaviour
                     rewindSequence.Join(transform.DOShakePosition(resetTime, 2.0f));
                 }
                 rewindSequence.AppendCallback(ResetTimer);
-                
-                FMODUnity.RuntimeManager.PlayOneShot("SFX/Clock/5secBeforeEnd");
-
             }
+
+            if (timer.Value < 5 && !_playedEndSFX)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Clock/5secBeforeEnd");
+                _playedEndSFX = true;
+            }
+                
         }
     }
 
