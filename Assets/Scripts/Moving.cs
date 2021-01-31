@@ -159,4 +159,17 @@ public class Moving : MonoBehaviour
             transform.rotation = Quaternion.Euler(0,0,180);
         }
     }
+
+    public void GetStar()
+    {
+        if (_CurrentConstellationRenderer)
+        {
+            _CurrentConstellationRenderer.DrawLine();
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
+        }
+
+        GameObject newConstellationRendere = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
+        _CurrentConstellationRenderer = newConstellationRendere.GetComponent<ConstellationRenderer>();
+    }
 }
