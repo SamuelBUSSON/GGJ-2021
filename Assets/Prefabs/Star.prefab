@@ -117,6 +117,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b8e3ef9004bf22146975285649de0684, type: 3}
   - {fileID: 21300000, guid: 1f33fb7e30cb66d4eab498d4bb6c3a1e, type: 3}
   starsSize:
-  - 0.1
   - 0.2
-  - 0.1
+  - 0.2
+  - 0.2
