@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Moving : MonoBehaviour
@@ -23,9 +24,12 @@ public class Moving : MonoBehaviour
     public float timeBetweenEachPoint = 0.3f;
     public GameObject lineRenderModel;
     public VisualEffect particleFX;
+    public Vector2 generateConstellationRange = new Vector2(4, 6);
+    
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
     private List<Vector3> _lastPoints;
+    private List<GameObject> _constellationLines;
 
     void Start()
     {
@@ -35,10 +39,13 @@ public class Moving : MonoBehaviour
         _dest = transform.position;
         size = character.bounds.size.x;
 
+        _constellationLines = new List<GameObject>();
         _lastPoints = new List<Vector3>();
         GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
         newConstellationRenderer.AddComponent<ConstellationRenderer>();
         _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Music/StartTheMFMusicGame");  
     }
 
     private void Update()
@@ -157,6 +164,26 @@ public class Moving : MonoBehaviour
         if (direction == Vector2.right)
         {
             transform.rotation = Quaternion.Euler(0,0,180);
+        }
+    }
+
+    public void GetStar()
+    {
+        if (_CurrentConstellationRenderer)
+        {
+            _CurrentConstellationRenderer.DrawLine();
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(1));
+            _lastPoints.Add(_CurrentConstellationRenderer.GetLastPoint(2));
+        }
+
+        GameObject newConstellationRendere = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
+        _CurrentConstellationRenderer = newConstellationRendere.GetComponent<ConstellationRenderer>();
+        
+        _constellationLines.Add(newConstellationRendere);
+
+        if (_constellationLines.Count >= Random.Range(generateConstellationRange.x, generateConstellationRange.y))
+        {
+            
         }
     }
 }
