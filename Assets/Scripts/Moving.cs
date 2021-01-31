@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Moving : MonoBehaviour
@@ -23,6 +24,7 @@ public class Moving : MonoBehaviour
     public float timeBetweenEachPoint = 0.3f;
     public GameObject lineRenderModel;
     public VisualEffect particleFX;
+    public Vector2 generateConstellationRange = new Vector2(4, 6);
     
     private float _timerSetPoint;
     private ConstellationRenderer _CurrentConstellationRenderer;
@@ -174,5 +176,12 @@ public class Moving : MonoBehaviour
 
         GameObject newConstellationRendere = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
         _CurrentConstellationRenderer = newConstellationRendere.GetComponent<ConstellationRenderer>();
+        
+        _constellationLines.Add(newConstellationRendere);
+
+        if (_constellationLines.Count >= Random.Range(generateConstellationRange.x, generateConstellationRange.y))
+        {
+            
+        }
     }
 }
