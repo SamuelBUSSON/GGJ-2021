@@ -32,10 +32,14 @@ public class Spawner : MonoBehaviour
         
         starsCount= CountStar();
         Debug.Log(starsCount);
-        if (starsCount == 1)
+        if (starsCount == 0)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Point/Enter");
+        }
+        else if (starsCount == 1)
         {
             AddStar();
-            
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Point/Exit");   
         }
     }
 
