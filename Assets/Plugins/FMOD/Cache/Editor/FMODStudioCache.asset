@@ -1,6 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6833237831360775193
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 3831191027741938091}
+  - {fileID: 130616874191820199}
+  EditorEvents:
+  - {fileID: 6142155131206326763}
+  - {fileID: 7820254056237894844}
+  - {fileID: 2616437723200538878}
+  - {fileID: 5976782785659644889}
+  - {fileID: 2402214245515259314}
+  - {fileID: 8754547007267994045}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 130616874191820199}
+  StringsBanks:
+  - {fileID: 3831191027741938091}
+  stringsBankWriteTime: 637477050919855595
+  cacheVersion: 6
+--- !u!114 &130616874191820199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+  Path: event:/Music/StartTheMFMusic
+  guid: ece36bae935d164bbc964088fef2b084
+  Banks: []
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-3641947989425790922
+=======
+  Path: Assets/SoundBanks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637477050920284460
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2402214245515259314
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,7 +77,7 @@ MonoBehaviour:
   Path: event:/SFX/Clock/5secBeforeEnd
   guid: ce44b4dde8335645a5c5777eadadf96a
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -23,7 +85,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 11043
---- !u!114 &-6159874242229777363
+--- !u!114 &2616437723200538878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33,102 +95,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/StartTheMFMusicGame
+  m_Name: event:/SFX/End/EndOfTime
   m_EditorClassIdentifier: 
-  Path: event:/Music/StartTheMFMusicGame
-  guid: ece36bae935d164bbc964088fef2b084
-  Banks:
-  - {fileID: -851152733581853699}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-4859369761223047240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/StartTheMFMusic
-  m_EditorClassIdentifier: 
-  Path: event:/Music/StartTheMFMusic
-  guid: ece36bae935d164bbc964088fef2b084
-  Banks: []
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-3641947989425790922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MenuMusic
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MenuMusic
-  guid: 3d228c14421c054f955063fdd7363ef3
-  Banks:
-  - {fileID: -851152733581853699}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-3583276144735076898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Clock/EndOfTime
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Clock/EndOfTime
+  Path: event:/SFX/End/EndOfTime
   guid: 46f1b56236fbd14eb94f188fe09da7bc
-  Banks: []
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &-3389984939861057405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MenuMusic
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MenuMusic
-  guid: 3d228c14421c054f955063fdd7363ef3
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -136,6 +108,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+<<<<<<< Updated upstream
 --- !u!114 &-851152733581853699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +129,9 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &-310892737686551414
+=======
+--- !u!114 &3831191027741938091
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,13 +146,17 @@ MonoBehaviour:
   Path: Assets/SoundBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< Updated upstream
   lastModified: 637477049902421049
+=======
+  lastModified: 637477050919855595
+>>>>>>> Stashed changes
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 1024
   Exists: 1
---- !u!114 &-299077424710332330
+--- !u!114 &5976782785659644889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,12 +166,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/StartTheMFMusicGame
+  m_Name: event:/SFX/Point/Enter
   m_EditorClassIdentifier: 
-  Path: event:/Music/StartTheMFMusicGame
-  guid: ece36bae935d164bbc964088fef2b084
+  Path: event:/SFX/Point/Enter
+  guid: 6904e875f951554da3b2c83bbba9f399
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -199,6 +179,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+<<<<<<< Updated upstream
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +210,9 @@ MonoBehaviour:
   stringsBankWriteTime: 637477049902421049
   cacheVersion: 6
 --- !u!114 &1324082387442342480
+=======
+--- !u!114 &6142155131206326763
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +227,7 @@ MonoBehaviour:
   Path: event:/SFX/Point/Exit
   guid: 0c4abbbec7a05e44bed349c938fcc8b3
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -251,6 +235,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+<<<<<<< Updated upstream
 --- !u!114 &4093512657321839728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +260,9 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 0
 --- !u!114 &5570163822231084474
+=======
+--- !u!114 &7820254056237894844
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,12 +272,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/End/EndOfTime
+  m_Name: event:/Music/MenuMusic
   m_EditorClassIdentifier: 
-  Path: event:/SFX/End/EndOfTime
-  guid: 46f1b56236fbd14eb94f188fe09da7bc
+  Path: event:/Music/MenuMusic
+  guid: 3d228c14421c054f955063fdd7363ef3
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -297,7 +285,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &7128009827647515162
+--- !u!114 &8754547007267994045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,12 +295,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Point/Enter
+  m_Name: event:/Music/StartTheMFMusicGame
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Point/Enter
-  guid: 6904e875f951554da3b2c83bbba9f399
+  Path: event:/Music/StartTheMFMusicGame
+  guid: ece36bae935d164bbc964088fef2b084
   Banks:
-  - {fileID: -851152733581853699}
+  - {fileID: 130616874191820199}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
