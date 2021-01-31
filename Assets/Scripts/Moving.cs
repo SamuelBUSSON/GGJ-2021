@@ -44,6 +44,8 @@ public class Moving : MonoBehaviour
         GameObject newConstellationRenderer = Instantiate(lineRenderModel, Vector3.zero, Quaternion.identity);
         newConstellationRenderer.AddComponent<ConstellationRenderer>();
         _CurrentConstellationRenderer = newConstellationRenderer.GetComponent<ConstellationRenderer>();
+        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Music/StartTheMFMusicGame");  
     }
 
     private void Update()
