@@ -20,6 +20,9 @@ public class Star : MonoBehaviour
 
         GetComponent<CircleCollider2D>().radius = starsSize[i];
 
+        Material m = Instantiate(GetComponent<SpriteRenderer>().material);
+        GetComponent<SpriteRenderer>().material = m;
+
     }
 
     void OnTriggerEnter2D(Collider2D co)
