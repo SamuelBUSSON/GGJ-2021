@@ -139,4 +139,24 @@ public class Moving : MonoBehaviour
             return (hit.collider == _collider2D);
         }
     }
+    
+    private void SetRotation(Vector2 direction)
+    {
+        if (direction == Vector2.left)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        if (direction == Vector2.up)
+        {
+            transform.rotation = Quaternion.Euler(0,0,-90);
+        }
+        if (direction == Vector2.down)
+        {
+            transform.rotation = Quaternion.Euler(0,0,90);
+        }
+        if (direction == Vector2.right)
+        {
+            transform.rotation = Quaternion.Euler(0,0,180);
+        }
+    }
 }
