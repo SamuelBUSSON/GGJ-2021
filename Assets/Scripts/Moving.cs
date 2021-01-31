@@ -122,6 +122,7 @@ public class Moving : MonoBehaviour
         if( Valid(orientation))
         {
             particleFX.SetVector3("PlayerVelocity", orientation);
+            SetRotation(orientation);
             _dest = (Vector2) transform.position + orientation;
         }
         
@@ -133,6 +134,26 @@ public class Moving : MonoBehaviour
             RaycastHit2D hit = Physics2D.CircleCast(pos+dir, character.bounds.size.x / 2, -dir, character.bounds.size.x / 2);
             Debug.DrawLine(pos,pos+dir,Color.red,1f);
             return (hit.collider == _collider2D);
+        }
+    }
+    
+    private void SetRotation(Vector2 direction)
+    {
+        if (direction == Vector2.left)
+        {
+            transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        if (direction == Vector2.up)
+        {
+            transform.rotation = Quaternion.Euler(0,0,-90);
+        }
+        if (direction == Vector2.down)
+        {
+            transform.rotation = Quaternion.Euler(0,0,90);
+        }
+        if (direction == Vector2.right)
+        {
+            transform.rotation = Quaternion.Euler(0,0,180);
         }
     }
 }
